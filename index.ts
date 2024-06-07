@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import inquirer from "inquirer";
 let condition: boolean = true;
 
@@ -9,6 +10,10 @@ do {
       type: "input",
     },
   ]);
-  let countWords = answer.sentence.trim().split(" ");
-  console.log(countWords.length);
+  let userSentence = answer.sentence
+  
+  let countWords = userSentence.trim().split(/\s+/g).length;
+  let countAlphabets = userSentence.match(/[aA-zZ]/g).length;
+  console.log("Total words: "+countWords);
+  console.log("Total alphabets: "+countAlphabets);
 } while (condition);
